@@ -1,7 +1,13 @@
-<div>
-    <h3>{{ name }}</h3>
+<div class="card my-3">
+    <div class="card-header">
+        <h3 class="text-center">{{ name }}</h3>
+    </div>
+    <ul class="list-group list-group-flush">
+        <app-list-item *ngFor="let item of items" [item]="item" [name]="name" class="list-group-item"></app-list-item>
+    </ul>
+    
 
-    <app-list-item *ngFor="let item of items" [item]="item" [name]="name"></app-list-item>
+    
     <app-add-item (addItem)="addItem($event)"></app-add-item>
 
 </div>
