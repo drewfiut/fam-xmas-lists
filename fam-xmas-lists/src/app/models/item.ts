@@ -1,7 +1,7 @@
 export class Item {
 
-    id:number;
-    title:string;
+    id:string;
+    name:string;
     link:string;
     completed:boolean;
 

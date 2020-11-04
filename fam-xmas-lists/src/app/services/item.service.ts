@@ -1,35 +1,40 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "angularfire2/firestore";
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Item } from "../models/item"
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  constructor() { }
+  itemsCollection: AngularFirestoreCollection<Item>;
 
-  getItems() {
-    return [
-      {
-        id:1,
-        title:"socks",
-        link:"none",
-        completed:true
+  constructor(public afs: AngularFirestore) { 
+  }
 
-      },
-      {
-        id:2,
-        title:"charger",
-        link:"none",
-        completed:true
+  getItems(name:String) {
+    return this.afs.collection('lists/' + name + '/items').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Item;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
 
-      },
-      {
-        id:3,
-        title:"candle",
-        link:"none",
-        completed:false
+  toggleCompleted(item:Item, name:String){
+    return this.afs.doc('lists/' + name + '/items/' + item.id).update({'completed': item.completed});
+  }
 
-      },
-    ];
+  addItem(item, name) {
+    return this.afs.collection('lists/' + name + '/items').add(item);
+    
+  }
+
+  deleteItem(item, name) {
+    return this.afs.doc('lists/' + name + '/items/' + item.id).delete();
   }
 }

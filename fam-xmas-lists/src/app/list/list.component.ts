@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { Item } from "../models/item";
 import { ItemService } from "../services/item.service"
 
@@ -9,12 +10,19 @@ import { ItemService } from "../services/item.service"
 })
 export class ListComponent implements OnInit {
 
-  items:Item[];
+  items;
+  @Input() name:String;
 
   constructor(private ItemService:ItemService) { }
 
   ngOnInit(): void {
-    this.items = this.ItemService.getItems();
+    this.ItemService.getItems(this.name).subscribe(items => {
+      this.items = items;
+    });
+  }
+
+  addItem(item:Item) {
+    this.ItemService.addItem(item, this.name);
   }
 
 }

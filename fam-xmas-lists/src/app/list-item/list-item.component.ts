@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Item } from '../models/item';
 import '@angular/common'
-import { toUnicode } from 'punycode';
+import { ItemService } from "../services/item.service"
 
 @Component({
   selector: 'app-list-item',
@@ -11,8 +11,9 @@ import { toUnicode } from 'punycode';
 export class ListItemComponent implements OnInit {
 
   @Input() item:Item;
+  @Input() name:String;
 
-  constructor() { }
+  constructor(private ItemService:ItemService) { }
 
   ngOnInit(): void {
   }
@@ -25,12 +26,15 @@ export class ListItemComponent implements OnInit {
     return classes;
   }
 
-  onClick(item) {
-    console.log(item);
+  onDelete(item) {
+    this.ItemService.deleteItem(item, this.name);
   }
 
   onToggle(item) {
     item.completed = !item.completed;
+
+    this.ItemService.toggleCompleted(item, this.name);
+    
   }
 
 }

@@ -1,7 +1,8 @@
 <div [ngClass]="setClasses()">
     <p>
         <input (change)="onToggle(item)" type="checkbox" />
-        {{ item.title }}
-        <button (click)="onClick(item)" class="del">x</button>
+        {{ item.name }}
+        <a *ngIf="item.link != ''" href="https://{{item.link}}" target="_blank">link</a>
+        <button (click)="onDelete(item)" class="del">x</button>
     </p>
 </div>
