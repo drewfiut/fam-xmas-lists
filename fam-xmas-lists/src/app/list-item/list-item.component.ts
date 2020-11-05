@@ -11,7 +11,7 @@ import { ItemService } from "../services/item.service"
 export class ListItemComponent implements OnInit {
 
   @Input() item:Item;
-  @Input() name:String;
+  @Input() user;
 
   constructor(private ItemService:ItemService) { }
 
@@ -25,14 +25,10 @@ export class ListItemComponent implements OnInit {
     return classes;
   }
 
-  onDelete(item) {
-    this.ItemService.deleteItem(item, this.name);
-  }
-
   onToggle(item) {
     item.completed = !item.completed;
 
-    this.ItemService.toggleCompleted(item, this.name);
+    this.ItemService.toggleCompleted(item, this.user);
     
   }
 

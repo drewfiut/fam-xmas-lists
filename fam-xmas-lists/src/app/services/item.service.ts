@@ -17,8 +17,8 @@ export class ItemService {
   constructor(public afs: AngularFirestore) { 
   }
 
-  getItems(name:String) {
-    return this.afs.collection('lists/' + name + '/items').snapshotChanges().pipe(
+  getUsers(current) {
+    return this.afs.collection('users/', ref => ref.where('uid', '!=', current.uid)).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Item;
         const id = a.payload.doc.id;
@@ -27,17 +27,26 @@ export class ItemService {
     );
   }
 
-  toggleCompleted(item:Item, name:String){
-    return this.afs.doc('lists/' + name + '/items/' + item.id).update({'completed': item.completed});
+  getItems(user) {
+    return this.afs.collection('users/' + user.uid + '/list').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Item;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
 
-  addItem(item, name) {
-    return this.afs.collection('lists/' + name + '/items').add(item);
+  toggleCompleted(item:Item, user){
+    return this.afs.doc('users/' + user.uid + '/list/' + item.id).update({'completed': item.completed});
+  }
+
+  addItem(item, user) {
+    return this.afs.collection('users/' + user.uid + '/list').add(item);
     
   }
 
-  deleteItem(item, name) {
-    console.log(this.afs.collection('users/').valueChanges());
-    return this.afs.doc('lists/' + name + '/items/' + item.id).delete();
+  deleteItem(item, user) {
+    return this.afs.doc('users/' + user.uid + '/list/' + item.id).delete();
   }
 }

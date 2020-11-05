@@ -1,14 +1,10 @@
 <div class="card my-3">
     <div class="card-header">
-        <h3 class="text-center">{{ name }}</h3>
+        <h3 class="text-center">{{ user.displayName }}</h3>
     </div>
     <ul class="list-group list-group-flush">
-        <app-list-item *ngFor="let item of items" [item]="item" [name]="name" class="list-group-item"></app-list-item>
+        <app-list-item *ngFor="let item of items" [item]="item" [user]="user" class="list-group-item"></app-list-item>
     </ul>
-    
-
-    
-    <app-add-item (addItem)="addItem($event)"></app-add-item>
 
 </div>
 
