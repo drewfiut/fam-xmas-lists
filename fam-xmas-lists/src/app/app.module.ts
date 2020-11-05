@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { environment } from "../environments/environment";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
@@ -19,9 +21,12 @@ import { AddItemComponent } from './add-item/add-item.component';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([]),
     AngularFireModule.initializeApp(environment.firebase, 'fam-xmas-lists'),
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    AngularFireAuthModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

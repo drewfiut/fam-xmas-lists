@@ -1,8 +1,25 @@
 <div class="body pb-5">
-  <div class="header p-3">
-    <h1 class="text-center display-3">Christmas Lists</h1>
+
+  <div *ngIf="auth.user$ | async as user; else login">
+
+    <button (click)="auth.signout()" class="btn btn-primary text-center">signOut</button>
+    
+
+    
   </div>
-  <div class="container">
-    <app-list *ngFor="let name of names" [name]="name"></app-list>
-  </div>
+
+  <ng-template #login>
+    <button (click)="auth.googleSignin()">sign in</button>
+    <div class="header p-3">
+      <h1 class="text-center display-3">Christmas Lists</h1>
+      
+    </div>
+    <div class="container">
+      <app-list *ngFor="let name of names" [name]="name"></app-list>
+    </div>
+  </ng-template>
+
+
 </div>
+
+<router-outlet></router-outlet>

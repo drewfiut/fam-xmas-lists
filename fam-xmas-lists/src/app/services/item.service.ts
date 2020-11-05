@@ -1,8 +1,10 @@
+import { unescapeIdentifier } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "angularfire2/firestore";
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Item } from "../models/item"
+import { AuthService } from './auth.service';
 
 
 @Injectable({
@@ -35,6 +37,7 @@ export class ItemService {
   }
 
   deleteItem(item, name) {
+    console.log(this.afs.collection('users/').valueChanges());
     return this.afs.doc('lists/' + name + '/items/' + item.id).delete();
   }
 }

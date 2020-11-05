@@ -4,7 +4,7 @@
         <span>{{ item.name }}</span>
     </div>
     <div>
-        <a *ngIf="item.link != ''" href="https://{{item.link}}" target="_blank" class="btn btn-info mr-3">link</a>
-        <button (click)="onDelete(item)" class="btn btn-danger">x</button>
+        <a *ngIf="item.link != ''" href="{{item.link}}" target="_blank" class="btn btn-info mr-3">link</a>
+        <button (click)="onDelete(item)" class="btn btn-danger">X</button>
     </div>
 </div>
