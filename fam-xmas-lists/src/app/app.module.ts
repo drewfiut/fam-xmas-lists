@@ -16,6 +16,7 @@ import { MyListItemComponent } from './my-list-item/my-list-item.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ListsComponent } from './lists/lists.component';
 import { NavComponent } from './nav/nav.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NavComponent } from './nav/nav.component';
     MyListComponent,
     MyListItemComponent,
     ListsComponent,
-    NavComponent
+    NavComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

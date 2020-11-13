@@ -12,24 +12,12 @@ import { ItemService } from "./services/item.service"
 
 export class AppComponent {
 
-  users;
   current;
 
   title = 'fam-xmas-lists';
 
   constructor(public auth: AuthService, public ItemService:ItemService){
     this.current = this.auth.user$;
-    this.auth.user$.subscribe(user => {
-      var current = user;
-      
-      this.ItemService.getUsers(current).subscribe(users => {
-        this.users = users;
-        
-      });
-    });
-
-  
-    
   }
 
 }
