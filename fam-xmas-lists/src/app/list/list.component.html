@@ -1,14 +1,11 @@
 <div class="card my-3">
-    <div class="card-header">
-        <h3 class="text-center">{{ name }}</h3>
+    <div class="card-header d-flex justify-content-center align-items-center">
+        <!-- <img *ngIf="user.photoURL" src="{{ user.photoURL }}" class="img-fluid mr-3 rounded-circle" width="50px" height="50px"> -->
+        <h3>{{ user.displayName }}</h3>
     </div>
     <ul class="list-group list-group-flush">
-        <app-list-item *ngFor="let item of items" [item]="item" [name]="name" class="list-group-item"></app-list-item>
+        <app-list-item *ngFor="let item of items" [item]="item" [user]="user" [current]="current"></app-list-item>
     </ul>
-    
-
-    
-    <app-add-item (addItem)="addItem($event)"></app-add-item>
 
 </div>
 

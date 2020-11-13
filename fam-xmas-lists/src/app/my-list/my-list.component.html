@@ -1,0 +1,13 @@
+<div class="card my-3">
+    <div class="card-header">
+        <h3 class="text-center">My List</h3>
+    </div>
+    <ul class="list-group list-group-flush">
+        <app-my-list-item *ngFor="let item of items" [item]="item" [user]="user" class="list-group-item"></app-my-list-item>
+    </ul>
+    
+
+    
+    <app-add-item (addItem)="addItem($event)"></app-add-item>
+
+</div>

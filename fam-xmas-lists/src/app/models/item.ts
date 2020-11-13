@@ -4,5 +4,6 @@ export class Item {
     name:string;
     link:string;
     completed:boolean;
+    by:string;
 
 }

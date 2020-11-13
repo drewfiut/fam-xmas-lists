@@ -11,18 +11,15 @@ import { ItemService } from "../services/item.service"
 export class ListComponent implements OnInit {
 
   items;
-  @Input() name:String;
+  @Input() user;
+  @Input() current;
 
   constructor(private ItemService:ItemService) { }
 
   ngOnInit(): void {
-    this.ItemService.getItems(this.name).subscribe(items => {
+    this.ItemService.getItems(this.user).subscribe(items => {
       this.items = items;
     });
-  }
-
-  addItem(item:Item) {
-    this.ItemService.addItem(item, this.name);
   }
 
 }

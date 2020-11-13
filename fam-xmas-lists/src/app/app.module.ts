@@ -11,13 +11,17 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import { AddItemComponent } from './add-item/add-item.component';
+import { MyListComponent } from './my-list/my-list.component';
+import { MyListItemComponent } from './my-list-item/my-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     ListItemComponent,
-    AddItemComponent
+    AddItemComponent,
+    MyListComponent,
+    MyListItemComponent
   ],
   imports: [
     BrowserModule,

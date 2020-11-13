@@ -1,9 +1,18 @@
-.header {
-    background-color: rgb(214, 0, 0);
-    color: rgb(0, 255, 0);
-
-}
-
 .body {
+    font-family: 'Asap', sans-serif;
     background-color: rgba(0, 60, 255, 0.616)!important;
 }
+
+.header {
+    background-color: rgb(161, 31, 31);
+    color: rgb(0, 255, 0);
+    font-weight: normal;
+    font-family: 'Lobster', cursive;
+
+}
+
+.nav-message {
+    color: white;
+    font-size: 1.7rem;
+}
+
