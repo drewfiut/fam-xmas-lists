@@ -11,6 +11,7 @@ jobs:
     - uses: actions/setup-node@master
       with:
         node-version: '10.x'
+    - run: cd fam-xmas-lists
     - run: npm install
     - run: npm run build:prod
     - uses: FirebaseExtended/action-hosting-deploy@v0
