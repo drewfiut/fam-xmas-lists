@@ -25,6 +25,7 @@ export class AddItemComponent implements OnInit {
       name: this.name,
       link: this.link,
       completed: false,
+      by: ""
     }
     this.addItem.emit(item);
     

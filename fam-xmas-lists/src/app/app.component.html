@@ -1,25 +1,53 @@
 <div class="body pb-5">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Asap&family=Lobster&display=swap');
+  </style>
 
   <div class="header p-3">
     <h1 class="text-center display-3">Christmas Lists</h1>
-    
+
   </div>
 
   <div *ngIf="auth.user$ | async as user; else login">
 
-    <div *ngIf="current | async as current" class="container">
-      <button (click)="auth.signout()" class="btn btn-primary text-center btn-lg m-2">signOut</button>
-      <app-list *ngFor="let user of users" [user]="user"></app-list>
-      <app-my-list [user]="current"></app-my-list>
+    <div *ngIf="current | async as current">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand p-0 ml-3" href="#"><img src="assets/logo.png" width="60" height="60" alt="" loading="lazy"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-3 m-auto">
+            <li class="nav-item">
+              <span class="nav-message">Merry Christmas, {{user.displayName}}</span>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-3">
+            <li class="nav-item">
+              <button (click)="auth.signout()" class="btn btn-primary text-center btn-lg m-2">Sign Out</button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+
+        <div class="row">
+          <app-list *ngFor="let user of users" [user]="user" [current]="current" class="col-sm-12 col-md-6"></app-list>
+
+        </div>
+        <app-my-list [user]="current" class="col-6"></app-my-list>
+
+      </div>
     </div>
-    
+
   </div>
 
   <ng-template #login>
     <div class="d-flex justify-content-center">
       <button (click)="auth.googleSignin()" class="btn btn-warning btn-lg m-5">Sign In</button>
     </div>
-    
+
   </ng-template>
 
 

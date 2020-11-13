@@ -12,6 +12,7 @@ export class ListComponent implements OnInit {
 
   items;
   @Input() user;
+  @Input() current;
 
   constructor(private ItemService:ItemService) { }
 

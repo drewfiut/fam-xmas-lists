@@ -38,10 +38,27 @@ export class ItemService {
   }
 
   toggleCompleted(item:Item, user){
-    return this.afs.doc('users/' + user.uid + '/list/' + item.id).update({'completed': item.completed});
+    return this.afs.doc('users/' + user.uid + '/list/' + item.id).update({'completed': item.completed, 'by':item.by});
   }
 
   addItem(item, user) {
+    this.getUsers(user).subscribe(users => {
+      var uids = [];
+      users.forEach(user => {
+        uids.push(user.id);
+      });
+      const mail = {
+        toUids: uids,
+        message: {
+          subject: user.displayName + " added a new item!",
+          html: '<h4>' + user.displayName + ' added ' + item.name + ' to their list!</h4><a href="https://fam-xmas-lists.web.app/">Check it Out!</a>'
+        }
+
+      }
+      this.afs.collection('mail').add(mail);
+
+    });
+    
     return this.afs.collection('users/' + user.uid + '/list').add(item);
     
   }
