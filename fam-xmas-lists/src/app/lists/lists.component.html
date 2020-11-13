@@ -1,0 +1,7 @@
+<div *ngIf='current | async as current'>
+    <div class="row">
+        <app-list *ngFor="let user of users" [user]="user" [current]="current" class="col-sm-12 col-md-6"></app-list>
+
+    </div>
+    <app-my-list [user]="current" class="col-6"></app-my-list>
+</div>

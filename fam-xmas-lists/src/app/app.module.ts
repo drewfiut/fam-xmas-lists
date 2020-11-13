@@ -13,6 +13,10 @@ import { ListItemComponent } from './list-item/list-item.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { MyListComponent } from './my-list/my-list.component';
 import { MyListItemComponent } from './my-list-item/my-list-item.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ListsComponent } from './lists/lists.component';
+import { NavComponent } from './nav/nav.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import { MyListItemComponent } from './my-list-item/my-list-item.component';
     ListItemComponent,
     AddItemComponent,
     MyListComponent,
-    MyListItemComponent
+    MyListItemComponent,
+    ListsComponent,
+    NavComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +37,7 @@ import { MyListItemComponent } from './my-list-item/my-list-item.component';
     AngularFirestoreModule,
     FormsModule,
     AngularFireAuthModule,
+    AppRoutingModule,
     
   ],
   providers: [],
