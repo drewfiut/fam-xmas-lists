@@ -7,17 +7,12 @@ jobs:
   build_and_preview:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-node@master
-      with:
-        node-version: '10.x'
-    - run: cd fam-xmas-lists
-    - run: npm install
-    - run: npm run build:prod
-    - uses: FirebaseExtended/action-hosting-deploy@v0
-      with:
-        repoToken: '${{ secrets.GITHUB_TOKEN }}'
-        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FAM_XMAS_LISTS }}'
-        projectId: fam-xmas-lists
-      env:
-        FIREBASE_CLI_PREVIEWS: hostingchannels
+      - uses: actions/checkout@v2
+      - run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FAM_XMAS_LISTS }}'
+          projectId: fam-xmas-lists
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
