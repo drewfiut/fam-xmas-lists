@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item } from '../models/item';
 import '@angular/common'
 import { ItemService } from "../services/item.service"
@@ -12,14 +12,16 @@ export class MyListItemComponent implements OnInit {
 
   @Input() item:Item;
   @Input() user;
+  @Output() deleteItem:EventEmitter<any> = new EventEmitter();
 
   constructor(private ItemService:ItemService) { }
 
   ngOnInit(): void {
   }
 
-  onDelete(item) {
-    this.ItemService.deleteItem(item, this.user);
+  onDelete(item){
+    this.deleteItem.emit(item);
   }
+  
 
 }

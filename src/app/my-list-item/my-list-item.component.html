@@ -1,9 +1,10 @@
-<div class="d-flex justify-content-between align-items-center">
-    <div>
+<div class="row d-flex justify-content-between align-items-center">
+    <div class="col">
         <span>{{ item.name }}</span>
     </div>
-    <div>
-        <a *ngIf="item.link != ''" href="{{item.link}}" target="_blank" class="btn btn-info mr-3">link</a>
-        <button (click)="onDelete(item)" class="btn btn-danger">X</button>
+    <div class="col-sm-12 col-md-auto text-center m-3">
+        <a *ngIf="item.link != ''" href="{{item.link}}" target="_blank" class="btn btn-info mr-3">Link</a>
+        <button type="button" class="btn btn-danger" (click)="onDelete(item)">Delete</button>
+        
     </div>
 </div>
