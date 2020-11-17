@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ListsComponent } from './lists/lists.component';
 import { NavComponent } from './nav/nav.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChatComponent } from './chat/chat.component';
+import { SendChatComponent } from './send-chat/send-chat.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ProfileComponent } from './profile/profile.component';
     MyListItemComponent,
     ListsComponent,
     NavComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChatComponent,
+    SendChatComponent
   ],
   imports: [
     BrowserModule,
