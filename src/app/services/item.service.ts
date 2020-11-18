@@ -12,7 +12,7 @@ import { AuthService } from './auth.service';
 })
 export class ItemService {
 
-  itemsCollection: AngularFirestoreCollection<Item>;
+  // itemsCollection: AngularFirestoreCollection<Item>;
 
   constructor(public afs: AngularFirestore) { 
   }

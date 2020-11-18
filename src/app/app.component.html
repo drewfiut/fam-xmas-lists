@@ -9,14 +9,11 @@
   </div>
 
   <div *ngIf="auth.user$ | async as user; else login">
+    <app-nav></app-nav>
+    <div class="container">
 
-    <div *ngIf="current | async as current">
-      <app-nav [user]="current"></app-nav>
-      <div class="container">
+      <router-outlet></router-outlet>
 
-        <router-outlet></router-outlet>
-
-      </div>
     </div>
 
   </div>
@@ -30,4 +27,3 @@
 
 
 </div>
-

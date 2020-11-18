@@ -14,6 +14,7 @@ export class ListsComponent implements OnInit {
 
   constructor(public auth: AuthService, public ItemService:ItemService){
     this.current = this.auth.user$;
+    console.log(this.auth.user$);
     this.auth.user$.subscribe(user => {
       var current = user;
       

@@ -2,10 +2,13 @@
     <div class="card-header">
         <h3 class="text-center">Chat</h3>
     </div>
-    <div class="card-body scroll" id="chat">
+    <div class="card-body scroll pb-0 pt-2 px-3" id="chat">
         <div *ngFor="let chat of chats">
-            <p *ngIf="chat.uid == current.uid; else someone"><strong>Me: </strong>{{ chat.message }}</p>
-            <ng-template #someone><p><strong>{{ chat.name }}: </strong>{{ chat.message }}</p></ng-template>
+            <span class="text-muted">{{ chat.time.seconds * 1000 | date: 'MMM d, y, h:mm a' }}</span>
+            <p *ngIf="chat.uid == current.uid; else someone" class="m-0"><strong>Me: </strong>{{ chat.message }}</p>
+            <ng-template #someone><p class="m-0"><strong>{{ chat.name }}: </strong>{{ chat.message }}</p></ng-template>
+            
+            <hr class="p-0 m-2">
         </div>
         
     </div>
